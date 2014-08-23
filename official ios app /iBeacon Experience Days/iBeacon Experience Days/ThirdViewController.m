@@ -20,10 +20,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
 
-    NSString * url = [[NSString alloc] initWithFormat:@"http://jon651.glimworm.com/ibeacon/api-expdays.php?action=floorplan"];
-    
-    NSString *s = [self stringWithUrl:[NSURL URLWithString:url]];
-    [webview loadHTMLString:s baseURL:nil];
+    [self reload];
     
 }
 
@@ -33,6 +30,17 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)reload
+{
+    
+    int i = rand()%10000+1;
+    
+    NSString * url = [[NSString alloc] initWithFormat:@"http://jon651.glimworm.com/ibeacon/api-expdays.php?action=floorplan&_i=%d",i];
+    
+    NSString *s = [self stringWithUrl:[NSURL URLWithString:url]];
+    [webview loadHTMLString:s baseURL:nil];
+
+}
 
 - (NSString *)stringWithUrl:(NSURL *)url
 {
@@ -55,4 +63,8 @@
     return [[NSString alloc] initWithData:urlData encoding:NSUTF8StringEncoding];
 }
 
+- (IBAction)reload:(id)sender {
+    [self reload];
+
+}
 @end

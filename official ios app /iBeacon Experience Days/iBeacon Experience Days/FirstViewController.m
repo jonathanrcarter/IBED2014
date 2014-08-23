@@ -295,7 +295,7 @@ long inc = 0;
 
 - (IBAction)whazam:(id)sender {
     
-    [self performSelector:@selector(kazam) withObject:self afterDelay:3.0];
+    [self performSelector:@selector(kazam) withObject:self afterDelay:1.0];
     
 }
 @end

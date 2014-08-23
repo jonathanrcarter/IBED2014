@@ -45,7 +45,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="First" image="first" id="u1e-5L-l1D"/>
+                    <tabBarItem key="tabBarItem" title="SCAN" image="first" id="u1e-5L-l1D"/>
                     <connections>
                         <outlet property="webview" destination="GV0-4e-FZf" id="OHk-dC-hIy"/>
                     </connections>
@@ -54,7 +54,7 @@
             </objects>
             <point key="canvasLocation" x="653" y="-138"/>
         </scene>
-        <!--Third View Controller - Item-->
+        <!--Third View Controller - DEV INFO-->
         <scene sceneID="23W-Sc-4Fg">
             <objects>
                 <viewController id="Hea-SZ-90S" customClass="ThirdViewController" sceneMemberID="viewController">
@@ -67,14 +67,24 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cfg-Ui-laH">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="40" width="320" height="477"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </webView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Yo-QY-b4q">
+                                <rect key="frame" x="130" y="8" width="43" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="reload">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="reload:" destination="Hea-SZ-90S" eventType="touchUpInside" id="kQC-rd-NnI"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="jYo-l0-rZw"/>
+                    <tabBarItem key="tabBarItem" title="DEV INFO" id="jYo-l0-rZw"/>
                     <connections>
                         <outlet property="webview" destination="Cfg-Ui-laH" id="6Bg-Dq-vyx"/>
                     </connections>
@@ -83,7 +93,7 @@
             </objects>
             <point key="canvasLocation" x="675" y="1268"/>
         </scene>
-        <!--View Controller - Item-->
+        <!--View Controller - HOME-->
         <scene sceneID="9LJ-P9-MK0">
             <objects>
                 <viewController id="iKc-5m-2bL" sceneMemberID="viewController">
@@ -121,7 +131,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="SE1-TM-1rh"/>
+                    <tabBarItem key="tabBarItem" title="HOME" image="second" id="SE1-TM-1rh"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ACB-3I-mjb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -158,7 +168,7 @@
                             <constraint firstAttribute="trailing" secondItem="29h-N2-YGT" secondAttribute="trailing" constant="20" symbolic="YES" id="FIx-Zl-RBr"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Second" image="second" id="Z7h-1E-pvt"/>
+                    <tabBarItem key="tabBarItem" title="ABOUT" image="second" id="Z7h-1E-pvt"/>
                     <connections>
                         <outlet property="webview" destination="1QR-bD-pD4" id="mie-bK-Mad"/>
                     </connections>
