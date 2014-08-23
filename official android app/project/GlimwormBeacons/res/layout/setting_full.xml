@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/setting_container"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="#FFFFFF"
+    android:orientation="vertical"
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp" >
+
+    <ImageView
+        android:id="@+id/logo3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:contentDescription="device logo"
+        android:src="@drawable/glb_old" />
+
+    <TextView
+        android:id="@+id/setting_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/label_device_address"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/setting_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/label_device_address"
+        android:textColor="#AAAAAA"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/setting_current_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/label_device_address"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/setting_new_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New value"
+        android:textSize="18sp"
+        android:layout_marginTop="20dp" />
+
+</LinearLayout>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">iBeacon Experience Days</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+     <string name="ble_not_supported">Your device does not support Bluetooth low Energy, This is mandatory for this function</string>
+ <string name="error_bluetooth_not_supported">Please enable bluetooth</string>
+     
+</resources>
