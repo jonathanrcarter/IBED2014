@@ -13,6 +13,8 @@
 @interface FirstViewController ()
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, strong) CLBeaconRegion *beaconRegion;
+@property (nonatomic, strong) CBPeripheralManager *peripheralManager;
+
 
 
 @end
@@ -34,6 +36,9 @@ static NSString * const kIdentifier = @"SomeIdentifier";
     [self turnOnMonitoring];
     [self turnOnRanging];
 
+    self.peripheralManager = [[CBPeripheralManager alloc] initWithDelegate:self queue:nil options:nil];
+    
+    
     //webview.opaque = NO;
    // webview.backgroundColor = [UIColor clearColor];
     [webview loadHTMLString:@"<html><body style='background-color: transparent;'></body></html>" baseURL:nil];
@@ -275,6 +280,34 @@ long inc = 0;
     return [[NSString alloc] initWithData:urlData encoding:NSUTF8StringEncoding];
 }
 
+- (void)stopAdvertisingBeacon
+{
+    [self.peripheralManager stopAdvertising];
+    
+    NSLog(@"Turned off advertising.");
+}
+
+- (void)turnOnAdvertising
+{
+    if (self.peripheralManager.state != CBPeripheralManagerStatePoweredOn) {
+        NSLog(@"Peripheral manager is off.");
+        return;
+    }
+    
+    time_t t;
+    srand((unsigned) time(&t));
+    CLBeaconRegion *region = [[CLBeaconRegion alloc] initWithProximityUUID:self.beaconRegion.proximityUUID
+                                                                     major: 9001
+                                                                     minor: 9002
+                                                                identifier:self.beaconRegion.identifier];
+    NSDictionary *beaconPeripheralData = [region peripheralDataWithMeasuredPower:nil];
+    [self.peripheralManager startAdvertising:beaconPeripheralData];
+    
+    NSLog(@"Turning on advertising for region: %@.", region);
+    
+}
+
+
 
 - (void)kazam
 {
@@ -297,5 +330,12 @@ long inc = 0;
     
     [self performSelector:@selector(kazam) withObject:self afterDelay:1.0];
     
+}
+- (IBAction)startadvertising:(id)sender {
+    [self turnOnAdvertising];
+}
+
+- (IBAction)stopadvertising:(id)sender {
+    [self stopAdvertisingBeacon];
 }
 @end

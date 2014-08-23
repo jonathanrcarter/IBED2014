@@ -1,0 +1,20 @@
+var bleno = require('bleno');
+
+var uuid = '74278BDAB64445208F0C720EAF059935';		// glimworm
+//var uuid = '74278BDAB64445208F0C720EAF059936';	 	// blushrr
+var major = 900; // 0x0000 - 0xffff
+var minor = 9101; // 0x0000 - 0xffff
+var measuredPower = -59; // -128 - 127
+
+bleno.startAdvertisingIBeacon(uuid, major, minor, measuredPower, function(err) {
+
+	if (err) {
+		console.log(err);
+	} else {
+		console.log("advertising");
+	}
+
+} );
+//bleno.startAdvertisingIBeacon(uuid, major, minor, measuredPower, callback(error));
+
+

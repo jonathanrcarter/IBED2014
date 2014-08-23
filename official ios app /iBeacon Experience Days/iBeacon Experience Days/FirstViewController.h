@@ -14,5 +14,7 @@
 @interface FirstViewController : UIViewController <CLLocationManagerDelegate, CBPeripheralManagerDelegate, CBCentralManagerDelegate, CBPeripheralDelegate, UIApplicationDelegate>
 - (IBAction)whazam:(id)sender;
 @property (weak, nonatomic) IBOutlet UIWebView *webview;
+- (IBAction)startadvertising:(id)sender;
+- (IBAction)stopadvertising:(id)sender;
 
 @end
