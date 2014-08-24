@@ -9,6 +9,7 @@
 #import "FirstViewController.h"
 #import "ShapeView.h"
 #import "BTDeviceModel.h"
+#import "RateView.h"
 
 @interface FirstViewController ()
 @property (nonatomic, strong) CLLocationManager *locationManager;
@@ -23,7 +24,8 @@
 @synthesize webview;
 
 
-static NSString * const kUUID = @"74278bda-b644-4520-8f0c-720eaf059935";
+//static NSString * const kUUID = @"74278bda-b644-4520-8f0c-720eaf059935";
+static NSString * const kUUID = @"74278bda-b644-4520-8f0c-720eaf059936";
 static NSString * const kIdentifier = @"SomeIdentifier";
 
 
@@ -38,6 +40,11 @@ static NSString * const kIdentifier = @"SomeIdentifier";
 
     self.peripheralManager = [[CBPeripheralManager alloc] initWithDelegate:self queue:nil options:nil];
     
+
+    RateView* rv = [RateView rateViewWithRating:3.7f];
+    rv.canRate = true;
+    rv.frame = CGRectMake(0, 200, 320, 60);
+    [self.view addSubview:rv];
     
     //webview.opaque = NO;
    // webview.backgroundColor = [UIColor clearColor];
@@ -192,8 +199,19 @@ long inc = 0;
         Beacons = [[NSMutableArray alloc]init];
     }
     
+    
+    int highest_major = 0;
+    int highest_minor = 0;
     for (int index = 0; index < [beacons count]; index++) {
         CLBeacon *b = [beacons objectAtIndex:index];
+        
+        if (b.major.intValue > highest_major) {
+            highest_major = b.major.intValue;
+        }
+        if (b.minor.intValue > highest_minor) {
+            highest_minor = b.minor.intValue;
+        }
+        
         bool found = false;
         for (int index1 = 0; index1 < [Beacons count]; index1++) {
             BTDeviceModel *b1 = [Beacons objectAtIndex:index1];
@@ -224,19 +242,24 @@ long inc = 0;
         }
     }
     
-    
-    St = @"";
-    for (int index = 0; index < [Beacons count]; index++) {
-        BTDeviceModel *b = [Beacons objectAtIndex:index];
-        NSString *BEACON = [NSString stringWithFormat:@"%@,%@,%@,%ld,%f,%@,%ld", b.uuid, b.major, b.minor, (long)b.rssi, b.dist, b.proximity, (inc - b.increment)];
-        if ((inc - b.increment) < 10) {
-            St =[NSString stringWithFormat:@"%@:%@", St , BEACON];
-        }
+    if (highest_major == 100 && highest_minor == 100) {
+        [webview loadHTMLString:@"<html><body><h1>Debucy Symphony 1 movement 1</h1></body></html>" baseURL:nil];
     }
-//    for (int index = 0; index < [beacons count]; index++) {
-//        CLBeacon *b = [beacons objectAtIndex:index];
-//        NSString *BEACON = [NSString stringWithFormat:@"%@,%@,%@,%ld,%f,%d", [b.proximityUUID UUIDString], b.major, b.minor, (long)b.rssi, b.accuracy, b.proximity];
-//        St =[NSString stringWithFormat:@"%@:%@", St , BEACON];
+    if (highest_major == 100 && highest_minor == 200) {
+        [webview loadHTMLString:@"<html><body><h1>Debucy Symphony 1 movement 2</h1></body></html>" baseURL:nil];
+    }
+    if (highest_major == 100 && highest_minor == 300) {
+        [webview loadHTMLString:@"<html><body><h1>Debucy Symphony 1 movement 3</h1></body></html>" baseURL:nil];
+    }
+    
+    
+//    St = @"";
+//    for (int index = 0; index < [Beacons count]; index++) {
+//        BTDeviceModel *b = [Beacons objectAtIndex:index];
+//        NSString *BEACON = [NSString stringWithFormat:@"%@,%@,%@,%ld,%f,%@,%ld", b.uuid, b.major, b.minor, (long)b.rssi, b.dist, b.proximity, (inc - b.increment)];
+//        if ((inc - b.increment) < 10) {
+//            St =[NSString stringWithFormat:@"%@:%@", St , BEACON];
+//        }
 //    }
     
 }

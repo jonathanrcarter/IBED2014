@@ -157,7 +157,8 @@ static NSString * const kIdentifier = @"SomeIdentifier";
 - (void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region
 {
     NSLog(@"Entered region: %@", region);
-    NSString *url = [NSString stringWithFormat:@"http://jon651.glimworm.com/ibeacon/api-expdays.php?action=enter&region=%@", region];
+//    NSString *url = [NSString stringWithFormat:@"http://jon651.glimworm.com/ibeacon/api-expdays.php?action=enter&region=%@", region];
+    NSString *url = [NSString stringWithFormat:@"http://bikefinder.werkplek.org/parser.php?action=enter&region=%@", region];
     
     NSString *s = [self stringWithUrl:[NSURL URLWithString:url]];
     NSLog(@" html %@",s);
@@ -168,7 +169,8 @@ static NSString * const kIdentifier = @"SomeIdentifier";
 - (void)locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region
 {
     NSLog(@"Exited region: %@", region);
-    NSString *url = [NSString stringWithFormat:@"http://jon651.glimworm.com/ibeacon/api-expdays.php?action=exit&region=%@", region];
+//    NSString *url = [NSString stringWithFormat:@"http://jon651.glimworm.com/ibeacon/api-expdays.php?action=exit&region=%@", region];
+    NSString *url = [NSString stringWithFormat:@"http://bikefinder.werkplek.org/parser.php?action=exit&region=%@", region];
     NSString *s = [self stringWithUrl:[NSURL URLWithString:url]];
     NSLog(@" html %@",s);
 
@@ -319,7 +321,8 @@ long inc = 0;
     NSString * escapedQuery = [unescapedQuery stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
 
 
-    NSString * url = [[NSString alloc] initWithFormat:@"http://jon651.glimworm.com/ibeacon/api-expdays.php%@", escapedQuery];
+//    NSString * url = [[NSString alloc] initWithFormat:@"http://jon651.glimworm.com/ibeacon/api-expdays.php%@", escapedQuery];
+    NSString * url = [[NSString alloc] initWithFormat:@"http://bikefinder.werkplek.org/parser.php%@", escapedQuery];
     
     
     
